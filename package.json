@@ -1,0 +1,17 @@
+{
+  "name": "litegap",
+  "version": "0.0.0",
+  "description": "installs Couchbase Lite in your PhoneGap app",
+  "main": "index.js",
+  "dependencies": {
+    "findit": "~0.1.2",
+    "xmlbuilder": "~0.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "Apache 2.0"
+}
