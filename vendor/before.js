@@ -12,20 +12,34 @@ xml.att('version',"0.1.0")
 
 
 var ios = xml.ele("name", "LiteGap").up()
-.ele("asset",{src:"www/litegap.js"}).up()
 .ele("platform", {name:"ios"})
 	.ele("config-file", {target:"config.xml", parent:"/widget/plugins"})
 		.ele("plugin", {name:"LiteGap", value : "LiteGap"}).up().up();
 
-ios.ele("header-file",{src:"LiteGap.h"});
-ios.ele("source-file",{src:"LiteGap.m"});
+ios.ele("header-file",{src:"src/ios/LiteGap.h"});
+ios.ele("source-file",{src:"src/ios/LiteGap.m"});
 
-var finder = find("CouchbaseLite-a1c1/iOS");
+var linkwith = [
+	"libsqlite3.dylib",
+	"libstdc++.dylib",
+	"libicucore.dylib",
+	"libz.dylib",
+	"Security.framework"
+	]
+
+	linkwith.forEach(function(l){
+		ios.ele("framework", {src : l})
+	})
+
+
+var finder = find("CouchbaseLite/iOS");
 finder.on("file", function(file) {
 	if (/.*\.h/.test(file)) {
-		ios.ele("framework",{src:"../../vendor/"+file});
+		// ios.ele("header-file",{src:"vendor/"+file});
+	} else if (/CouchbaseLite(Listener)?$/.test(file)) {
+		// ios.ele("source-file",{framework:true, src:"vendor/"+file});
 	} else {
-		ios.ele("framework",{src:"../../vendor/"+file});
+		// ios.ele("resource-file", {src:"vendor/"+file})
 	}
 })
 
