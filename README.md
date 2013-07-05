@@ -22,5 +22,7 @@ And you can do the rest of your interacting [via Ajax and the REST API.](https:/
 
 ## Known Issues
 
+* Doesn't work on Simulator. This [hack fix from Stackoverflow](http://stackoverflow.com/questions/14579666/xcode4-6-lion10-8-ios-6-1-error-sbtarget-is-invalid) seems relevant.
+
 * JavaScript views aren't installed by the plugman manifest. You can enable JavaScript by following thier portion [of the instructions here](https://github.com/couchbaselabs/LiteGap/wiki/Building-a-PhoneGap-Couchbase-Lite-Container) after you have run the cbl-plugman install.
 
