@@ -4,8 +4,8 @@
   <platform name="ios">
     <config-file target="config.xml" parent="/widget">
       <feature name="LiteGap">
-        <param name="ios-package" value="LiteGap" />
-        <param name="onload" value="true" />
+        <param name="ios-package" value="LiteGap"/>
+        <param name="onload" value="true"/>
       </feature>
     </config-file>
     <header-file src="src/ios/LiteGap.h"/>
@@ -15,5 +15,40 @@
     <framework src="libicucore.dylib"/>
     <framework src="libz.dylib"/>
     <framework src="Security.framework"/>
+    <source-file framework="true" src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/CouchbaseLite.a"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLAttachment.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLDatabase+Attachments.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLDatabase+Insertion.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLDatabase+Internal.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLDatabase+LocalDocs.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLDatabase+Replication.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLDatabase.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLDocument.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLJSON.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLManager.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLModel.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLModelFactory.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLQuery.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLReplication.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLRevision.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLStatus.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLUITableSource.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLView+Internal.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBLView.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBL_Attachment.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBL_Body.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBL_Puller.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBL_Pusher.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBL_Replicator.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBL_Revision.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBL_Router.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBL_Server.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CBL_URLProtocol.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/CouchbaseLite.h"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Headers/MYDynamicObject.h"/>
+    <resource-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/Info.plist"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLite.framework/PrivateHeaders/CouchbaseLitePrivate.h"/>
+    <source-file framework="true" src="vendor/CouchbaseLite/iOS/CouchbaseLiteListener.framework/CouchbaseLiteListener.a"/>
+    <header-file src="vendor/CouchbaseLite/iOS/CouchbaseLiteListener.framework/Headers/CBLListener.h"/>
   </platform>
 </plugin>

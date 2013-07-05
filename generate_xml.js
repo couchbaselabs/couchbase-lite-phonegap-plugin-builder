@@ -13,8 +13,11 @@ xml.att('version',"0.1.0")
 
 var ios = xml.ele("name", "LiteGap").up()
 .ele("platform", {name:"ios"})
-	.ele("config-file", {target:"config.xml", parent:"/widget/plugins"})
-		.ele("plugin", {name:"LiteGap", value : "LiteGap"}).up().up();
+	.ele("config-file", {target:"config.xml", parent:"/widget"})
+		.ele("feature", {name:"LiteGap"})
+			.ele("param", {name:"ios-package", value : "LiteGap"}).up()
+			.ele("param", {name:"onload", value : "true"}).up()
+		.up().up();
 
 ios.ele("header-file",{src:"src/ios/LiteGap.h"});
 ios.ele("source-file",{src:"src/ios/LiteGap.m"});
@@ -32,25 +35,30 @@ var linkwith = [
 	})
 
 
-var finder = find("CouchbaseLite/iOS");
+var finder = find("vendor/CouchbaseLite/iOS");
 finder.on("file", function(file) {
 	if (/.*\.h/.test(file)) {
-		// ios.ele("header-file",{src:"vendor/"+file});
-	} else if (/CouchbaseLite(Listener)\.a$/.test(file)) {
-		// ios.ele("source-file",{framework:true, src:"vendor/"+file});
+		ios.ele("header-file",{src:file});
+		console.log("#import", '"'+file.split('/').pop()+'"')
+	} else if (/CouchbaseLite(Listener)?\.a$/.test(file)) {
+		ios.ele("source-file",{framework:true, src:file});
+	} else if (/DS_Store/.test(file)) {
+// nothing
 	} else {
-		// ios.ele("resource-file", {src:"vendor/"+file})
+		ios.ele("resource-file", {src:file})
 	}
 })
 
 finder.on("end", function() {
 	var xml = ios.end({pretty:true});
 	console.log(xml)
-	fs.writeFile("../plugin.xml", xml, function(err) {
-	    if(err) {
-	        console.log(err);
+	fs.writeFile("plugin.xml", xml, function(err) {
+	    if (err) {
+	      console.log(err);
 	    } else {
-	        console.log("The file was saved!");
+	       console.log("The file was saved!");
+	       console.log("to use it, cd into the xcode project directory and run:")
+	       console.log("plugman --debug --platform ios --project . --plugin "+__dirname)
 	    }
 	})
 })

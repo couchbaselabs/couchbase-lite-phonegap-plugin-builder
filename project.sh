@@ -3,4 +3,4 @@ cd LG2
 git init
 git add .
 git commit -m "initial pg create app"
-echo "run this: plugman --debug --platform ios --project . --plugin /Users/jchris/code/cb/mobile/couchbase-lite-phonegap-plugin"
+echo "build the pg plugin then run this: plugman --debug --platform ios --project . --plugin /Users/jchris/code/cb/mobile/couchbase-lite-phonegap-plugin"
