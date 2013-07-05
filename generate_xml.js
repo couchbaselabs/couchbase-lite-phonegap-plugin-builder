@@ -35,14 +35,17 @@ var linkwith = [
 	})
 
 
-var finder = find("vendor/CouchbaseLite/iOS");
+var finder = find("plugman/frameworks");
 finder.on("file", function(file) {
+	file = file.replace(/^plugman\//,"")
 	if (/.*\.h/.test(file)) {
 		ios.ele("header-file",{src:file});
 		console.log("#import", '"'+file.split('/').pop()+'"')
-	} else if (/CouchbaseLite(Listener)?\.a$/.test(file)) {
+	} else if (/\.a$/.test(file)) {
 		ios.ele("source-file",{framework:true, src:file});
-	} else if (/DS_Store/.test(file)) {
+	} else if (/\.m$/.test(file)) {
+		ios.ele("source-file",{src:file});
+	} else if (/DS_Store|Info.plist/.test(file)) {
 // nothing
 	} else {
 		ios.ele("resource-file", {src:file})
@@ -52,7 +55,7 @@ finder.on("file", function(file) {
 finder.on("end", function() {
 	var xml = ios.end({pretty:true});
 	console.log(xml)
-	fs.writeFile("plugin.xml", xml, function(err) {
+	fs.writeFile("plugman/plugin.xml", xml, function(err) {
 	    if (err) {
 	      console.log(err);
 	    } else {
