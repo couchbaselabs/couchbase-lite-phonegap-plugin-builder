@@ -36,7 +36,7 @@ var finder = find("CouchbaseLite/iOS");
 finder.on("file", function(file) {
 	if (/.*\.h/.test(file)) {
 		// ios.ele("header-file",{src:"vendor/"+file});
-	} else if (/CouchbaseLite(Listener)?$/.test(file)) {
+	} else if (/CouchbaseLite(Listener)\.a$/.test(file)) {
 		// ios.ele("source-file",{framework:true, src:"vendor/"+file});
 	} else {
 		// ios.ele("resource-file", {src:"vendor/"+file})

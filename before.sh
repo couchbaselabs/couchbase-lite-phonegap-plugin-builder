@@ -5,4 +5,8 @@ cd vendor
 curl http://files.couchbase.com/developer-previews/mobile/ios/CouchbaseLite/CouchbaseLite-2013-03-29_14-01-06.zip -o CouchbaseLite.zip
 open CouchbaseLite.zip
 # download JavaScript core
+mv CouchbaseLite/iOS/* ./
+# rm CouchbaseLite/
+
+cd ..
 node before.js
