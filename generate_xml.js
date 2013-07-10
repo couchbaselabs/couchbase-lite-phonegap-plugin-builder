@@ -40,7 +40,6 @@ finder.on("file", function(file) {
 	file = file.replace(/^plugman\//,"")
 	if (/.*\.h/.test(file)) {
 		ios.ele("header-file",{src:file});
-		console.log("#import", '"'+file.split('/').pop()+'"')
 	} else if (/\.a$/.test(file)) {
 		ios.ele("source-file",{framework:true, src:file});
 	} else if (/\.m$/.test(file)) {

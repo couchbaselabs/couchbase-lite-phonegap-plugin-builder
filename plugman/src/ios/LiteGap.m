@@ -2,8 +2,7 @@
 
 #import "CouchbaseLite.h"
 #import "CBLListener.h"
-// todo add javascript support
-// #import "CBLJSViewCompiler.h"
+#import "CBLRegisterJSViewCompiler.h"
 
 #import <Cordova/CDV.h>
 
@@ -15,8 +14,8 @@
 {
     self = [super initWithWebView:theWebView];
     if (self) {
-    	// todo check domain whitelist to give devs a helpful error message
-    	[self launchCouchbaseLite];
+        // todo check domain whitelist to give devs a helpful error message
+        [self launchCouchbaseLite];
     }
     return self;
 }
@@ -25,7 +24,7 @@
 {
     NSLog(@"Opening database...");
     CBLManager* dbmgr = [CBLManager sharedInstance];
-    // [CBLView setCompiler: [[CBLJSViewCompiler alloc] init]];
+    CBLRegisterJSViewCompiler();
     NSURL* url = dbmgr.internalURL;
     NSLog(@"Couchbase Lite url = %@", url);
 }
