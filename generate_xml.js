@@ -71,7 +71,7 @@ function androidParts() {
 		.up().up();
 
 	android.ele("source-file", {
-		"src" : "src/android/CBLitePlugin.java",
+		"src" : "src/android/LiteGap.java",
 		"target-dir" : "src/com/couchbase/cblite/plugins"
 	});
 
