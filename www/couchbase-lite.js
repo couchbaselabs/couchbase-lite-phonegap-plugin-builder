@@ -1,21 +1,10 @@
-(function(){
-    var cordovaRef = window.PhoneGap || window.Cordova || window.cordova;
-
-    function LiteGap() { }
-
-    LiteGap.prototype.getCBLiteUrl = function(success, fail) {
-        return cordovaRef.exec(success, fail, 'LiteGap', 'getCBLiteUrl', []);
-    };
- 
-    if (cordovaRef)
-    {
-        cordovaRef.addConstructor(function() {
-            if(!window.plugins) {
-                window.plugins = {};
-            }
-            if(!window.plugins.litegap) {
-                window.plugins.litegap = new LiteGap();
-            }
-        });
+window.litegap = {
+    getCBLiteUrl : function(callback) {
+         // use node.js style error reporting (first argument)
+         cordova.exec(function(url){
+            callback(false, url);
+         }, function(err) {
+            callback(err);
+        }, "LiteGap", "getCBLiteUrl", []);
     }
-})(); /* End of Temporary Scope. */
+}
