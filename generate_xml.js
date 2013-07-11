@@ -13,6 +13,8 @@ var builder = require("xmlbuilder"),
 	path = require("path"),
 	find = require("findit").find;
 
+pluginDir = path.resolve(pluginDir)
+
 var xml = builder.create("plugin");
 
 xml.att('xmlns',"http://www.phonegap.com/ns/plugins/1.0")
