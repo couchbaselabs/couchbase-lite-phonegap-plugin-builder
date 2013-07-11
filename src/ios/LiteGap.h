@@ -2,7 +2,9 @@
 
 @interface LiteGap : CDVPlugin
 
-@property (nonatomic, strong) CDVInvokedUrlCommand *command;
+@property (nonatomic, strong) NSURL *liteURL;
+
+- (void)getCBLiteUrl:(CDVInvokedUrlCommand*)urlCommand;
 
 @end
 
