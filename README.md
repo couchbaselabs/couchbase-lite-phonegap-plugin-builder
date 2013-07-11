@@ -30,3 +30,7 @@ There are independent stages to the plugin build process. The scripts are design
 4. Create the plugin.xml manifest based on the files in the plugin directory structure.
 
 The build product is a directory with plugin.xml in it, as well as `src` and `lib` directories. The plugman tool likes to look for plugins in git repos, so to release a new version of the plugin you'll manually take the generated directory, and check it into the canonical Couchbase Lite Phonegap Plugin repo.
+
+### Known issues
+
+Steps 1, 2, and 3 above are not yet implemented. Step 4 lives in generate_xml.js

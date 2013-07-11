@@ -21,7 +21,7 @@ xml.att('id',"com.couchbase.litegap")
 xml.att('version',PLUGIN_VERSION)
 xml.ele("name", "LiteGap")
 xml.ele("description", "Install Couchbase Lite in your app to enable JSON sync.")
-xml.ele("asset", {src : "www/couchbase-lite.js"})
+xml.ele("asset", {src : "www/couchbase-lite.js", target : "couchbase-lite.js"})
 xml.ele("engines").ele("engine", {name : "cordova", version : ">=2.9.0"})
 
 var ios = xml.ele("platform", {name:"ios"})
