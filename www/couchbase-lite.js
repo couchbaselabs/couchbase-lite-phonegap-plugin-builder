@@ -1,10 +1,10 @@
 (function(){
     var cordovaRef = window.PhoneGap || window.Cordova || window.cordova;
 
-    function CBLitePlugin() { }
+    function LiteGap() { }
 
-    CBLitePlugin.prototype.init = function(success, fail) {
-        return cordovaRef.exec(success, fail, 'CBLitePlugin', 'initCBLite', []);
+    LiteGap.prototype.getCBLiteUrl = function(success, fail) {
+        return cordovaRef.exec(success, fail, 'LiteGap', 'getCBLiteUrl', []);
     };
  
     if (cordovaRef)
@@ -13,8 +13,8 @@
             if(!window.plugins) {
                 window.plugins = {};
             }
-            if(!window.plugins.cbLitePlugin) {
-                window.plugins.cbLitePlugin = new CBLitePlugin();
+            if(!window.plugins.litegap) {
+                window.plugins.litegap = new LiteGap();
             }
         });
     }
