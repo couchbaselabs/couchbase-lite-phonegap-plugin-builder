@@ -8,7 +8,7 @@
 
 @implementation LiteGap
 
-@synthesize liteUrl;
+@synthesize liteURL;
 
 - (id) initWithWebView:(UIWebView*)theWebView
 {
@@ -22,7 +22,7 @@
 
 - (void)getCBLiteUrl:(CDVInvokedUrlCommand*)urlCommand
 {
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[self.liteUrl absoluteString]];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[self.liteURL absoluteString]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:urlCommand.callbackId];
 }
 
@@ -32,8 +32,8 @@
     NSLog(@"Launching Couchbase Lite...");
     CBLManager* dbmgr = [CBLManager sharedInstance];
     CBLRegisterJSViewCompiler();
-    self.liteUrl = dbmgr.internalURL;
-    NSLog(@"Couchbase Lite url = %@", self.liteUrl);
+    self.liteURL = dbmgr.internalURL;
+    NSLog(@"Couchbase Lite url = %@", self.liteURL);
 }
 
 @end
