@@ -1,9 +1,9 @@
 
-# Generate a Couchbase-Lite PhoneGap plugman plugin
+# Generate a LiteGap plugman plugin
 
 This repo contains scripts to build a [plugman](https://github.com/apache/cordova-plugman) plugin for use with Cordova / PhoneGap.
 
-You only need to do this if you are working on the Couchbase-Lite Phonegap plugin.  If you just want to _use_ the plugin, you shouldn't need to generate it.  (TODO: add link to repo once it's there)
+You only need to do this if you are working on the LiteGap plugin.  If you just want to _use_ the plugin, you shouldn't need to generate it.  (TODO: add link to repo once it's there)
 
 There are independent stages to the plugin build process. The scripts are designed to allow you to work on the output of an earlier stage without rebuilding it. Here are rough descriptions of the stages:
 
