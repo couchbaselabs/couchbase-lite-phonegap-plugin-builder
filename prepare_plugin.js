@@ -24,7 +24,12 @@ xml.att('id',"com.couchbase.litegap")
 xml.att('version',PLUGIN_VERSION)
 xml.ele("name", "LiteGap")
 xml.ele("description", "Install Couchbase Lite in your app to enable JSON sync.")
+
+// TODO if anyone wanted to use the find() function here it might be a good
+// idea in the long run.
 xml.ele("asset", {src : "www/litegap.js", target : "litegap.js"})
+xml.ele("asset", {src : "www/litegap-example.html", target : "litegap-example.html"})
+
 xml.ele("engines").ele("engine", {name : "cordova", version : ">=2.9.0"})
 
 var ios = xml.ele("platform", {name:"ios"})
