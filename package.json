@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "findit": "~0.1.2",
-    "xmlbuilder": "~0.4.2"
+    "xmlbuilder": "~0.4.2",
+    "ncp" : "0.4.x"
   },
   "devDependencies": {},
   "scripts": {

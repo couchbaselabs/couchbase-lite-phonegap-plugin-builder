@@ -11,6 +11,7 @@ if (!pluginDir) {
 var builder = require("xmlbuilder"),
 	fs = require('fs'),
 	path = require("path"),
+	ncp = require("ncp").ncp,
 	find = require("findit").find;
 
 pluginDir = path.resolve(pluginDir)
@@ -109,10 +110,25 @@ function writePluginXML() {
 	    if (err) {
 	      console.log(err);
 	    } else {
-	       console.log("The file was saved!");
-	       console.log("to use it, cd into the xcode project directory and run:")
-	       console.log("plugman --debug --platform ios --project . --plugin "+path.resolve(pluginDir))
+	    	copySrcAndWWW()
 	    }
 	})
 }
+
+function copySrcAndWWW() {
+	ncp(path.resolve(__dirname, "www"), path.resolve(pluginDir, "www"), function (err) {
+	 if (err) {
+	   return console.error(err);
+	 }
+	 ncp(path.resolve(__dirname, "src"), path.resolve(pluginDir, "src"), function (err) {
+	  if (err) {
+	    return console.error(err);
+	  }
+	  console.log("The plugin is ready!");
+	  	console.log("to use it, cd into the xcode project directory and run:")
+	  	console.log("plugman --debug --platform ios --project . --plugin "+path.resolve(pluginDir))
+	 });
+	});
+};
+
 
