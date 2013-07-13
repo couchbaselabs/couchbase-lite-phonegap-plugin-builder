@@ -19,7 +19,7 @@
         // Now safe to use the PhoneGap API
         console.log("onDeviceReady() called")
         if (window.litegap) {
-            window.litegap.getCBLiteUrl(function(err, url) {
+            window.litegap.getURL(function(err, url) {
                 if (err) {
                     console.log("error launching: " + err)
                 } else {

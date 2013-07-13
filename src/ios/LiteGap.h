@@ -4,7 +4,7 @@
 
 @property (nonatomic, strong) NSURL *liteURL;
 
-- (void)getCBLiteUrl:(CDVInvokedUrlCommand*)urlCommand;
+- (void)getURL:(CDVInvokedUrlCommand*)urlCommand;
 
 @end
 

@@ -20,7 +20,7 @@
     return self;
 }
 
-- (void)getCBLiteUrl:(CDVInvokedUrlCommand*)urlCommand
+- (void)getURL:(CDVInvokedUrlCommand*)urlCommand
 {
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[self.liteURL absoluteString]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:urlCommand.callbackId];

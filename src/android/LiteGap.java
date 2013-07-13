@@ -28,14 +28,6 @@ public class LiteGap extends CordovaPlugin {
 		System.out.println("LiteGap() constructor called");
 	}
 
-	public void onResume(boolean multitasking) {
-		System.out.println("LiteGap.onResume() called");
-	}
-
-	public void onPause(boolean multitasking) {
-		System.out.println("LiteGap.onPause() called");
-	}
-
 	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
 		System.out.println("initialize() called");
 
@@ -70,7 +62,7 @@ public class LiteGap extends CordovaPlugin {
 	@Override
 	public boolean execute(String action, JSONArray args,
 			CallbackContext callback) {
-		if (action.equals("getCBLiteUrl")) {
+		if (action.equals("getURL")) {
 			try {
 
 				if (initFailed == true) {
@@ -112,5 +104,14 @@ public class LiteGap extends CordovaPlugin {
 		return boundPort;
 
 	}
+
+	public void onResume(boolean multitasking) {
+		System.out.println("LiteGap.onResume() called");
+	}
+
+	public void onPause(boolean multitasking) {
+		System.out.println("LiteGap.onPause() called");
+	}
+
 
 }
