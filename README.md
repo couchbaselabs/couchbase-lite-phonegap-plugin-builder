@@ -1,5 +1,6 @@
-
 # Generate a LiteGap plugman plugin
+
+**[You probably want to go to the LiteGap plugin itself](https://github.com/couchbaselabs/LiteGap)**
 
 This repo contains scripts to build a [plugman](https://github.com/apache/cordova-plugman) plugin for use with Cordova / PhoneGap.
 
