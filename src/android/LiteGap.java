@@ -1,9 +1,9 @@
 package com.couchbase.cblite.plugins;
 
-import org.apache.cordova.api.CallbackContext;
-import org.apache.cordova.api.CordovaPlugin;
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
-import org.apache.cordova.api.CordovaInterface;
+import org.apache.cordova.CordovaInterface;
 import org.json.JSONArray;
 
 import com.couchbase.cblite.CBLServer;
@@ -48,7 +48,7 @@ public class LiteGap extends CordovaPlugin {
 			CBLServer server = startCBLite(filesDir);
 
 			listenPort = startCBLListener(DEFAULT_LISTEN_PORT, server);
-			
+
 			System.out.println("initCBLite() completed successfully");
 
 

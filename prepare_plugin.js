@@ -75,8 +75,10 @@ iosFinder.on("end", androidParts)
 
 function androidParts() {
 	var android = xml.ele("platform", {name:"android"})
-		.ele("config-file", {target:"res/xml/config.xml", parent:"plugins"})
-			.ele("plugin", {name:"LiteGap", value: "com.couchbase.cblite.plugins.LiteGap"})
+		.ele("config-file", {target:"res/xml/config.xml", parent:"/*"})
+		.ele("feature", {name:"LiteGap"})
+			.ele("param", {name:"android-package", value : "com.couchbase.cblite.plugins.LiteGap"}).up()
+			.ele("param", {name:"onload", value : "true"}).up()
 		.up().up();
 
 	android.ele("source-file", {
