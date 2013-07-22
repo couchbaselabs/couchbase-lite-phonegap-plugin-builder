@@ -24,6 +24,7 @@ xml.att('id',"com.couchbase.litegap")
 xml.att('version',PLUGIN_VERSION)
 xml.ele("name", "LiteGap")
 xml.ele("description", "Install Couchbase Lite in your app to enable JSON sync.")
+xml.ele("license", "Apache 2.0")
 
 // TODO if anyone wanted to use the find() function here it might be a good
 // idea in the long run.
