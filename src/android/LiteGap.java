@@ -70,7 +70,7 @@ public class LiteGap extends CordovaPlugin {
 					return false;
 				} else {
 					String callbackRespone = String.format(
-							"http://localhost:%d", listenPort);
+							"http://localhost:%d/", listenPort);
 
 					callback.success(callbackRespone);
 
