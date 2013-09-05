@@ -1,4 +1,4 @@
-var PLUGIN_VERSION = "0.1.1";
+var PLUGIN_VERSION = "0.2.0";
 
 var pluginDir = process.argv[2]
 
@@ -20,28 +20,29 @@ var xml = builder.create("plugin");
 
 xml.att('xmlns',"http://www.phonegap.com/ns/plugins/1.0")
 xml.att('xmlns:android',"http://schemas.android.com/apk/res/android")
-xml.att('id',"com.couchbase.litegap")
+xml.att('id',"com.couchbase.lite.phonegap")
 xml.att('version',PLUGIN_VERSION)
-xml.ele("name", "LiteGap")
+xml.ele("name", "Couchbase Lite")
 xml.ele("description", "Install Couchbase Lite in your app to enable JSON sync.")
 xml.ele("license", "Apache 2.0")
 
 // TODO if anyone wanted to use the find() function here it might be a good
 // idea in the long run.
-xml.ele("asset", {src : "www/litegap.js", target : "litegap.js"})
+xml.ele("js-module", {src : "www/cblite.js", name : "CouchbaseLite"})
+	.ele("clobbers", {target : "window.cblite"})
 xml.ele("asset", {src : "www/litegap-example.html", target : "litegap-example.html"})
 
-xml.ele("engines").ele("engine", {name : "cordova", version : ">=2.9.0"})
+xml.ele("engines").ele("engine", {name : "cordova", version : "3.0.0"})
 
 var ios = xml.ele("platform", {name:"ios"})
 	.ele("config-file", {target:"config.xml", parent:"/widget"})
-		.ele("feature", {name:"LiteGap"})
-			.ele("param", {name:"ios-package", value : "LiteGap"}).up()
+		.ele("feature", {name:"CBLite"})
+			.ele("param", {name:"ios-package", value : "CBLite"}).up()
 			.ele("param", {name:"onload", value : "true"}).up()
 		.up().up();
 
-ios.ele("header-file",{src:"src/ios/LiteGap.h"});
-ios.ele("source-file",{src:"src/ios/LiteGap.m"});
+ios.ele("header-file",{src:"src/ios/CBLite.h"});
+ios.ele("source-file",{src:"src/ios/CBLite.m"});
 
 var linkwith = [
 	"libsqlite3.dylib",
@@ -76,13 +77,13 @@ iosFinder.on("end", androidParts)
 function androidParts() {
 	var android = xml.ele("platform", {name:"android"})
 		.ele("config-file", {target:"res/xml/config.xml", parent:"/*"})
-		.ele("feature", {name:"LiteGap"})
-			.ele("param", {name:"android-package", value : "com.couchbase.cblite.plugins.LiteGap"}).up()
+		.ele("feature", {name:"CBLite"})
+			.ele("param", {name:"android-package", value : "com.couchbase.cblite.phonegap.CBLite"}).up()
 			.ele("param", {name:"onload", value : "true"}).up()
 		.up().up();
 
 	android.ele("source-file", {
-		"src" : "src/android/LiteGap.java",
+		"src" : "src/android/CBLite.java",
 		"target-dir" : "src/com/couchbase/cblite/plugins"
 	});
 
@@ -134,7 +135,7 @@ function copySrcAndWWW() {
 	  }
 	  console.log("The plugin is ready!");
 	  	console.log("to use it, cd into the xcode project directory and run:")
-	  	console.log("plugman --debug --platform ios --project . --plugin "+path.resolve(pluginDir))
+	  	console.log("phonegap local plugin add "+path.resolve(pluginDir))
 	 });
 	});
 };

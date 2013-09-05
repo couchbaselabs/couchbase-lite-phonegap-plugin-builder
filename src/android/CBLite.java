@@ -1,4 +1,4 @@
-package com.couchbase.cblite.plugins;
+package com.couchbase.cblite.phonegap;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -14,7 +14,7 @@ import com.couchbase.cblite.javascript.CBLJavaScriptViewCompiler;
 
 import java.io.IOException;
 
-public class LiteGap extends CordovaPlugin {
+public class CBLite extends CordovaPlugin {
 
 	private static final int DEFAULT_LISTEN_PORT = 5984;
 	private boolean initFailed = false;
@@ -23,9 +23,9 @@ public class LiteGap extends CordovaPlugin {
 	/**
 	 * Constructor.
 	 */
-	public LiteGap() {
+	public CBLite() {
 		super();
-		System.out.println("LiteGap() constructor called");
+		System.out.println("CBLite() constructor called");
 	}
 
 	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -106,11 +106,11 @@ public class LiteGap extends CordovaPlugin {
 	}
 
 	public void onResume(boolean multitasking) {
-		System.out.println("LiteGap.onResume() called");
+		System.out.println("CBLite.onResume() called");
 	}
 
 	public void onPause(boolean multitasking) {
-		System.out.println("LiteGap.onPause() called");
+		System.out.println("CBLite.onPause() called");
 	}
 
 

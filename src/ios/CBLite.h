@@ -1,6 +1,6 @@
 #import <Cordova/CDV.h>
 
-@interface LiteGap : CDVPlugin
+@interface CBLite : CDVPlugin
 
 @property (nonatomic, strong) NSURL *liteURL;
 

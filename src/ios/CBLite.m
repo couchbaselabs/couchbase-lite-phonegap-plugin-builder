@@ -1,4 +1,4 @@
-#import "LiteGap.h"
+#import "CBLite.h"
 
 #import "CouchbaseLite.h"
 #import "CBLListener.h"
@@ -6,7 +6,7 @@
 
 #import <Cordova/CDV.h>
 
-@implementation LiteGap
+@implementation CBLite
 
 @synthesize liteURL;
 
