@@ -114,7 +114,7 @@ function androidParts() {
 
 
 function writePluginXML() {
-	var xmlstring = xml.end({pretty:true});
+	var xmlstring = xml.end({pretty:true}).replace('version="&gt;=', 'version=">=')
 	console.log(xmlstring)
 	fs.writeFile(path.join(pluginDir, "plugin.xml"), xmlstring, function(err) {
 	    if (err) {
