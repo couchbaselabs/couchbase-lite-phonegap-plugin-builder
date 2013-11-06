@@ -12,7 +12,7 @@ var builder = require("xmlbuilder"),
 	fs = require('fs'),
 	path = require("path"),
 	ncp = require("ncp").ncp,
-	find = require("findit").find;
+	finder = require("findit").find;
 
 pluginDir = path.resolve(pluginDir)
 
@@ -57,7 +57,7 @@ linkwith.forEach(function(l){
 	ios.ele("framework", {src : l})
 })
 
-var iosFinder = find(path.join(pluginDir,"lib", "ios"));
+var iosFinder = finder(path.join(pluginDir,"lib", "ios"));
 iosFinder.on("file", function(file) {
 	file = file.substring(pluginDir.length + 1)
 	if (/.*\.h/.test(file)) {
@@ -88,7 +88,7 @@ function androidParts() {
 		"target-dir" : "src/com/couchbase/cblite/plugins"
 	});
 
-	var androidFinder = find(path.join(pluginDir,"lib", "android"));
+	var androidFinder = finder(path.join(pluginDir,"lib", "android"));
 
 	androidFinder.on("file", function(file) {
 		file = file.substring(pluginDir.length + 1)
