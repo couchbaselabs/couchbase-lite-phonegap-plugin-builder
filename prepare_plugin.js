@@ -12,7 +12,7 @@ var builder = require("xmlbuilder"),
 	fs = require('fs'),
 	path = require("path"),
 	ncp = require("ncp").ncp,
-	finder = require("findit").find;
+	finder = require("findit");
 
 pluginDir = path.resolve(pluginDir)
 
