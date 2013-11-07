@@ -30,7 +30,7 @@ xml.ele("license", "Apache 2.0")
 // idea in the long run.
 xml.ele("js-module", {src : "www/cblite.js", name : "CouchbaseLite"})
 	.ele("clobbers", {target : "window.cblite"})
-xml.ele("asset", {src : "www/litegap-example.html", target : "litegap-example.html"})
+xml.ele("asset", {src : "www/cblite-example.html", target : "cblite-example.html"})
 
 xml.ele("engines").ele("engine", {name : "cordova", version : ">=3.0.0"})
 
@@ -50,7 +50,8 @@ var linkwith = [
 	"libicucore.dylib",
 	"libz.dylib",
 	"Security.framework",
-	"CFNetwork.framework"
+	"CFNetwork.framework",
+	"SystemConfiguration.framework"
 	]
 
 linkwith.forEach(function(l){
