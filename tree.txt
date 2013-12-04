@@ -1,79 +1,65 @@
 .
-└── lib
-    ├── android
-    │   ├── armeabi
-    │   │   └── libcom_couchbase_touchdb_TDCollateJSON.so
-    │   ├── cblite-ektorp.jar
-    │   ├── cblite-javascript.jar
-    │   ├── cblite-listener.jar
-    │   ├── cblite.jar
-    │   ├── commons-io-2.0.1.jar
-    │   ├── jackson-core-asl-1.9.2.jar
-    │   ├── jackson-mapper-asl-1.9.2.jar
-    │   ├── mips
-    │   │   └── libcom_couchbase_touchdb_TDCollateJSON.so
-    │   ├── org.ektorp-1.2.3.jar
-    │   ├── org.ektorp.android-1.2.3.jar
-    │   ├── rhino-1.7R3.jar
-    │   ├── servlet-api-2.4.jar
-    │   ├── slf4j-api-1.6.1.jar
-    │   ├── slf4j-jdk14-1.6.1.jar
-    │   ├── webserver.jar
-    │   └── x86
-    │       └── libcom_couchbase_touchdb_TDCollateJSON.so
-    └── ios
-        ├── CBLRegisterJSViewCompiler.h
-        ├── CouchbaseLite.framework
-        │   ├── CouchbaseLite.a
-        │   ├── Headers
-        │   │   ├── CBLAttachment.h
-        │   │   ├── CBLDatabase+Attachments.h
-        │   │   ├── CBLDatabase+Insertion.h
-        │   │   ├── CBLDatabase+Internal.h
-        │   │   ├── CBLDatabase+LocalDocs.h
-        │   │   ├── CBLDatabase+Replication.h
-        │   │   ├── CBLDatabase.h
-        │   │   ├── CBLDocument.h
-        │   │   ├── CBLJSON.h
-        │   │   ├── CBLManager.h
-        │   │   ├── CBLModel.h
-        │   │   ├── CBLModelFactory.h
-        │   │   ├── CBLQuery.h
-        │   │   ├── CBLReplication.h
-        │   │   ├── CBLRevision.h
-        │   │   ├── CBLStatus.h
-        │   │   ├── CBLUITableSource.h
-        │   │   ├── CBLView+Internal.h
-        │   │   ├── CBLView.h
-        │   │   ├── CBL_Attachment.h
-        │   │   ├── CBL_Body.h
-        │   │   ├── CBL_Puller.h
-        │   │   ├── CBL_Pusher.h
-        │   │   ├── CBL_Replicator.h
-        │   │   ├── CBL_Revision.h
-        │   │   ├── CBL_Router.h
-        │   │   ├── CBL_Server.h
-        │   │   ├── CBL_URLProtocol.h
-        │   │   ├── CouchbaseLite.h
-        │   │   └── MYDynamicObject.h
-        │   ├── Info.plist
-        │   └── PrivateHeaders
-        │       └── CouchbaseLitePrivate.h
-        ├── CouchbaseLiteListener.framework
-        │   ├── CouchbaseLiteListener.a
-        │   └── Headers
-        │       └── CBLListener.h
-        ├── JavaScriptCore.framework
-        │   ├── Headers
-        │   │   ├── JSBase.h
-        │   │   ├── JSContextRef.h
-        │   │   ├── JSObjectRef.h
-        │   │   ├── JSStringRef.h
-        │   │   ├── JSStringRefCF.h
-        │   │   ├── JSValueRef.h
-        │   │   ├── JavaScript.h
-        │   │   ├── JavaScriptCore.h
-        │   │   └── WebKitAvailability.h
-        │   ├── Info.plist
-        │   └── JavaScriptCore.a
-        └── libCBLJSViewCompiler.a
+├── README.md
+├── lib
+│   ├── android
+│   │   ├── CBLite-1.0.0-beta.jar
+│   │   ├── CBLiteJavascript-1.0.0-beta.jar
+│   │   ├── CBLiteListener-1.0.0-beta.jar
+│   │   ├── commons-io-2.0.1.jar
+│   │   ├── jackson-core-asl-1.9.2.jar
+│   │   ├── jackson-mapper-asl-1.9.2.jar
+│   │   ├── rhino-1.7R3.jar
+│   │   ├── servlet-api-2.4.jar
+│   │   ├── td_collator_so.jar
+│   │   └── webserver.jar
+│   └── ios
+│       ├── CBLRegisterJSViewCompiler.h
+│       ├── CouchbaseLite.framework
+│       │   ├── CouchbaseLite.a
+│       │   ├── Headers
+│       │   │   ├── CBLAttachment.h
+│       │   │   ├── CBLDatabase.h
+│       │   │   ├── CBLDocument.h
+│       │   │   ├── CBLJSON.h
+│       │   │   ├── CBLManager.h
+│       │   │   ├── CBLModel.h
+│       │   │   ├── CBLModelFactory.h
+│       │   │   ├── CBLQuery.h
+│       │   │   ├── CBLReplication.h
+│       │   │   ├── CBLRevision.h
+│       │   │   ├── CBLUITableSource.h
+│       │   │   ├── CBLView.h
+│       │   │   ├── CouchbaseLite.h
+│       │   │   └── MYDynamicObject.h
+│       │   └── Info.plist
+│       ├── CouchbaseLiteListener.framework
+│       │   ├── CouchbaseLiteListener.a
+│       │   └── Headers
+│       │       └── CBLListener.h
+│       ├── JavaScriptCore.framework
+│       │   ├── Headers
+│       │   │   ├── JSBase.h
+│       │   │   ├── JSContextRef.h
+│       │   │   ├── JSObjectRef.h
+│       │   │   ├── JSStringRef.h
+│       │   │   ├── JSStringRefCF.h
+│       │   │   ├── JSValueRef.h
+│       │   │   ├── JavaScript.h
+│       │   │   ├── JavaScriptCore.h
+│       │   │   └── WebKitAvailability.h
+│       │   ├── Info.plist
+│       │   └── JavaScriptCore.a
+│       └── libCBLJSViewCompiler.a
+├── plugin.xml
+├── src
+│   ├── android
+│   │   └── CBLite.java
+│   └── ios
+│       ├── CBLite.h
+│       └── CBLite.m
+└── www
+    ├── cblite-example.html
+    ├── cblite.js
+    └── litegap-example.html
+
+13 directories, 49 files
