@@ -86,7 +86,7 @@ function androidParts() {
 
 	android.ele("source-file", {
 		"src" : "src/android/CBLite.java",
-		"target-dir" : "src/com/couchbase/cblite/plugins"
+		"target-dir" : "src/com/couchbase/cblite/phonegap"
 	});
 
 	var androidFinder = finder(path.join(pluginDir,"lib", "android"));
