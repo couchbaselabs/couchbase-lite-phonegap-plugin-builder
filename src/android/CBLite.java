@@ -1,11 +1,14 @@
 package com.couchbase.cblite.phonegap;
 
+import android.content.Context;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CordovaInterface;
 import org.json.JSONArray;
 
+import com.couchbase.lite.android.AndroidContext;
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.listener.LiteListener;
 import com.couchbase.lite.router.URLStreamHandlerFactory;
@@ -44,8 +47,7 @@ public class CBLite extends CordovaPlugin {
 
 			View.setCompiler(new JavaScriptViewCompiler());
 
-			File filesDir = this.cordova.getActivity().getFilesDir();
-			Manager server = startCBLite(filesDir);
+			Manager server = startCBLite(this.cordova.getActivity());
 
 			listenPort = startCBLListener(DEFAULT_LISTEN_PORT, server);
 
@@ -85,10 +87,10 @@ public class CBLite extends CordovaPlugin {
 		return false;
 	}
 
-	protected Manager startCBLite(File directory) {
+	protected Manager startCBLite(Context context) {
 		Manager server;
 		try {
-			server = new Manager(directory, Manager.DEFAULT_OPTIONS);
+			server = new Manager(new AndroidContext(context), Manager.DEFAULT_OPTIONS);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
