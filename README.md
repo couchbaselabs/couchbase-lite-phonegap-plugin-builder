@@ -8,6 +8,8 @@ You only need to do this if you are working on the LiteGap plugin.  If you just 
 
 ## Running this Plugin Generator
 
+This code shows up in the Couchbase buildbot process [via this shell script.](https://github.com/couchbase/build/blob/master/scripts/jenkins/mobile/package_phonegap_plugin.sh)
+
 The generator works by downloading the latest Couchbase Lite for iOS and Android, and packaging them with the `cblite.getURL` PhoneGap plugin API as implemented in the `src` directory of this repository.
 
 Here are rough descriptions of the stages:
