@@ -46,7 +46,7 @@ public class CBLite extends CordovaPlugin {
 	private void initCBLite() {
 		try {
 
-            allowedCredentials = Credentials();
+		    allowedCredentials = new Credentials("", "");
             allowedCredentials.setRandomUsernamePassword();
 
 			URLStreamHandlerFactory.registerSelfIgnoreError();
@@ -55,7 +55,7 @@ public class CBLite extends CordovaPlugin {
 
 			Manager server = startCBLite(this.cordova.getActivity());
 
-			listenPort = startCBLListener(DEFAULT_LISTEN_PORT, server);
+			listenPort = startCBLListener(DEFAULT_LISTEN_PORT, server, allowedCredentials);
 
 			System.out.println("initCBLite() completed successfully");
 
@@ -79,8 +79,8 @@ public class CBLite extends CordovaPlugin {
 				} else {
 					String callbackRespone = String.format(
 							"http://%s:%s@localhost:%d/",
-                            acceptedCredentials.getLogin(),
-                            acceptedCredentials.getPassword(),
+                            allowedCredentials.getLogin(),
+                            allowedCredentials.getPassword(),
                             listenPort
                     );
 
