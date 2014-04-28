@@ -46,8 +46,7 @@ public class CBLite extends CordovaPlugin {
 	private void initCBLite() {
 		try {
 
-		    allowedCredentials = new Credentials("", "");
-            allowedCredentials.setRandomUsernamePassword();
+		    allowedCredentials = new Credentials();
 
 			URLStreamHandlerFactory.registerSelfIgnoreError();
 
@@ -109,8 +108,7 @@ public class CBLite extends CordovaPlugin {
 
 	private int startCBLListener(int listenPort, Manager server, Credentials allowedCredentials) {
 
-		LiteListener listener = new LiteListener(server, listenPort);
-        listener.setAllowedCredentials(allowedCredentials);
+		LiteListener listener = new LiteListener(server, listenPort, allowedCredentials);
 		int boundPort = listener.getListenPort();
 		Thread thread = new Thread(listener);
 		thread.start();
