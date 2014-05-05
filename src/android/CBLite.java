@@ -11,6 +11,8 @@ import org.json.JSONArray;
 import com.couchbase.lite.android.AndroidContext;
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.listener.LiteListener;
+import com.couchbase.lite.listener.LiteServlet;
+import com.couchbase.lite.listener.Credentials;
 import com.couchbase.lite.router.URLStreamHandlerFactory;
 import com.couchbase.lite.View;
 import com.couchbase.lite.javascript.JavaScriptViewCompiler;
@@ -23,6 +25,7 @@ public class CBLite extends CordovaPlugin {
 	private static final int DEFAULT_LISTEN_PORT = 5984;
 	private boolean initFailed = false;
 	private int listenPort;
+    private Credentials allowedCredentials;
 
 	/**
 	 * Constructor.
@@ -43,13 +46,15 @@ public class CBLite extends CordovaPlugin {
 	private void initCBLite() {
 		try {
 
+		    allowedCredentials = new Credentials();
+
 			URLStreamHandlerFactory.registerSelfIgnoreError();
 
 			View.setCompiler(new JavaScriptViewCompiler());
 
 			Manager server = startCBLite(this.cordova.getActivity());
 
-			listenPort = startCBLListener(DEFAULT_LISTEN_PORT, server);
+			listenPort = startCBLListener(DEFAULT_LISTEN_PORT, server, allowedCredentials);
 
 			System.out.println("initCBLite() completed successfully");
 
@@ -72,7 +77,11 @@ public class CBLite extends CordovaPlugin {
 					return false;
 				} else {
 					String callbackRespone = String.format(
-							"http://localhost:%d/", listenPort);
+							"http://%s:%s@localhost:%d/",
+                            allowedCredentials.getLogin(),
+                            allowedCredentials.getPassword(),
+                            listenPort
+                    );
 
 					callback.success(callbackRespone);
 
@@ -97,9 +106,9 @@ public class CBLite extends CordovaPlugin {
 		return server;
 	}
 
-	private int startCBLListener(int listenPort, Manager server) {
+	private int startCBLListener(int listenPort, Manager server, Credentials allowedCredentials) {
 
-		LiteListener listener = new LiteListener(server, listenPort);
+		LiteListener listener = new LiteListener(server, listenPort, allowedCredentials);
 		int boundPort = listener.getListenPort();
 		Thread thread = new Thread(listener);
 		thread.start();
