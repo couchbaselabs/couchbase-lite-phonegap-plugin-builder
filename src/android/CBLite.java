@@ -16,6 +16,7 @@ import com.couchbase.lite.listener.Credentials;
 import com.couchbase.lite.router.URLStreamHandlerFactory;
 import com.couchbase.lite.View;
 import com.couchbase.lite.javascript.JavaScriptViewCompiler;
+import com.couchbase.lite.util.Log;
 
 import java.io.IOException;
 import java.io.File;
@@ -97,18 +98,30 @@ public class CBLite extends CordovaPlugin {
 	}
 
 	protected Manager startCBLite(Context context) {
-		Manager server;
+		Manager manager;
 		try {
-			server = new Manager(new AndroidContext(context), Manager.DEFAULT_OPTIONS);
+		        Manager.enableLogging(Log.TAG, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_SYNC, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_QUERY, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_VIEW, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_CHANGE_TRACKER, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_BLOB_STORE, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_DATABASE, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_LISTENER, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_MULTI_STREAM_WRITER, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_REMOTE_REQUEST, Log.VERBOSE);
+			Manager.enableLogging(Log.TAG_ROUTER, Log.VERBOSE);
+			manager = new Manager(new AndroidContext(context), Manager.DEFAULT_OPTIONS);
+			
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-		return server;
+		return manager;
 	}
 
-	private int startCBLListener(int listenPort, Manager server, Credentials allowedCredentials) {
+	private int startCBLListener(int listenPort, Manager manager, Credentials allowedCredentials) {
 
-		LiteListener listener = new LiteListener(server, listenPort, allowedCredentials);
+		LiteListener listener = new LiteListener(manager, listenPort, allowedCredentials);
 		int boundPort = listener.getListenPort();
 		Thread thread = new Thread(listener);
 		thread.start();
