@@ -8,6 +8,7 @@ import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CordovaInterface;
 import org.json.JSONArray;
 
+import com.couchbase.lite.NetworkReachabilityManager;
 import com.couchbase.lite.android.AndroidContext;
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.listener.LiteListener;
@@ -100,7 +101,24 @@ public class CBLite extends CordovaPlugin {
 	protected Manager startCBLite(Context context) {
 		Manager manager;
 		try {
-		        Manager.enableLogging(Log.TAG, Log.VERBOSE);
+
+            AndroidContext context = new AndroidContext(getApplicationContext());
+
+            // short circuit the network reachability manager as
+            // part of diagnosing https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin/issues/22
+            context.setNetworkReachabilityManager(new NetworkReachabilityManager() {
+                @Override
+                public void startListening() {
+                    // do nothing
+                }
+
+                @Override
+                public void stopListening() {
+                    // do nothing
+                }
+            });
+
+            Manager.enableLogging(Log.TAG, Log.VERBOSE);
 			Manager.enableLogging(Log.TAG_SYNC, Log.VERBOSE);
 			Manager.enableLogging(Log.TAG_QUERY, Log.VERBOSE);
 			Manager.enableLogging(Log.TAG_VIEW, Log.VERBOSE);
@@ -111,7 +129,7 @@ public class CBLite extends CordovaPlugin {
 			Manager.enableLogging(Log.TAG_MULTI_STREAM_WRITER, Log.VERBOSE);
 			Manager.enableLogging(Log.TAG_REMOTE_REQUEST, Log.VERBOSE);
 			Manager.enableLogging(Log.TAG_ROUTER, Log.VERBOSE);
-			manager = new Manager(new AndroidContext(context), Manager.DEFAULT_OPTIONS);
+			manager = new Manager(context, Manager.DEFAULT_OPTIONS);
 			
 		} catch (IOException e) {
 			throw new RuntimeException(e);
