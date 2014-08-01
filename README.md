@@ -21,6 +21,30 @@ Here are rough descriptions of the stages:
 
 The build product is a directory with plugin.xml in it, as well as `src` and `lib` directories. The plugman tool likes to look for plugins in git repos, so to release a new version of the plugin you'll manually take the generated directory, and check it into the canonical Couchbase Lite Phonegap Plugin repo.
 
-# Known issues
+## Known issues
 
 Steps 1, and 2 above are not yet implemented. Steps 3 and 4 lives in prepare_plugin.js
+
+## Updating the [github release repo](https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin)
+
+This repo is a git mirror of the [zip file produced by this Jenkins job](http://factory.couchbase.com/view/build/view/mobile_dev/job/package_phonegap_plugin/). When there is a release, you need to do this to push it to github:
+
+1. Download and uncompress the zip.
+2. Clone this repo.
+3. Copy the `.git/` directory from your clone of this repo into the unzipped build.
+4. Vist this repo on the github website and adjust the settings to make a branch other than `master` into the Default Branch.
+5. Delete the master branch from github with `git push origin :master` from inside the unzipped build.
+6. Create a new branch `pendingmaster`  with `git checkout -b pendingmaster`
+7. Check all your stuff into it with `git add --all` and `git commit`
+8. Delete your local master with `git branch -D master`
+9. Create a new local master without any history using `git checkout --orphan master`
+10. `git commit -m "new plugin bundle"`
+11. Publish the new branch with `git push origin master`
+12. Visit this repo on the github website and adjust the settings to make `master` into the Default Branch again.
+
+### Publishing to Cordova
+
+    npm install -g plugman
+
+From inside the package directory `plugman adduser` and `plugman publish .`
+
