@@ -1,4 +1,4 @@
-var PLUGIN_VERSION = "0.3.0";
+var PLUGIN_VERSION = "1.0.2";
 
 var pluginDir = process.argv[2]
 
