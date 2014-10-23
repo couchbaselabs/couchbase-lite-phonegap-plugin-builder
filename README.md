@@ -27,10 +27,10 @@ Steps 1, and 2 above are not yet implemented. Steps 3 and 4 lives in prepare_plu
 
 ## Updating the [github release repo](https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin)
 
-This repo is a git mirror of the [zip file produced by this Jenkins job](http://factory.couchbase.com/view/build/view/mobile_dev/job/package_phonegap_plugin/). When there is a release, you need to do this to push it to github:
+Preparation: Update the version value here: https://github.com/couchbaselabs/couchbase-lite-phonegap-plugin-builder/blob/master/prepare_plugin.js#L1, and then [kick off Jenkins job to get needed plug-in zip] (http://factory.couchbase.com/view/build/view/mobile_dev/job/package_phonegap_plugin/). When there is a release, you need to do this to push it to github:
 
 1. Download and uncompress the zip.
-2. Clone this repo.
+2. Clone [the repo](https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin).
 3. Copy the `.git/` directory from your clone of this repo into the unzipped build.
 4. Vist this repo on the github website and adjust the settings to make a branch other than `master` into the Default Branch.
 5. Delete the master branch from github with `git push origin :master` from inside the unzipped build.
