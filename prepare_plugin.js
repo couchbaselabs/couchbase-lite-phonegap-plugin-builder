@@ -51,7 +51,8 @@ var linkwith = [
 	"libz.dylib",
 	"Security.framework",
 	"CFNetwork.framework",
-	"SystemConfiguration.framework"
+	"SystemConfiguration.framework",
+	"JavaScriptCore.framework"
 	]
 
 linkwith.forEach(function(l){
