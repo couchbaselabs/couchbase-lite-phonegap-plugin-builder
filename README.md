@@ -42,9 +42,18 @@ Preparation: Update the version value here: https://github.com/couchbaselabs/cou
 11. Publish the new branch with `git push origin master`
 12. Visit this repo on the github website and adjust the settings to make `master` into the Default Branch again.
 
-### Publishing to Cordova
+### Publishing to Cordova ([deprecated](http://cordova.apache.org/announcements/2015/04/21/plugins-release-and-move-to-npm.html))
 
     npm install -g plugman
 
 From inside the package directory `plugman adduser` and `plugman publish .`
 
+### Publishing to NPM
+
+    npm install -g plugman
+
+From inside the package directory:
+
+1. `plugman createpackagejson .` (Change the name to all lowercase)
+2. `npm adduser`
+3. `npm publish .`
