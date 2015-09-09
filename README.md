@@ -55,5 +55,15 @@ From inside the package directory `plugman adduser` and `plugman publish .`
 From inside the package directory:
 
 1. `plugman createpackagejson .` (Change the name to all lowercase)
+
+ ```
+name: (com.couchbase.lite.phonegap) couchbase-lite-phonegap-plugin
+version: (1.1.1) 
+git repository: (https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin.git) 
+author: Couchbase
+license: (Apache 2.0) 
+```
+Note: Change "cordova_name" in package.json to "Couchbase Lite Phonegap Plugin".
+
 2. `npm adduser`
 3. `npm publish .`
