@@ -15,6 +15,7 @@ import com.couchbase.lite.listener.LiteServlet;
 import com.couchbase.lite.listener.Credentials;
 import com.couchbase.lite.router.URLStreamHandlerFactory;
 import com.couchbase.lite.View;
+import com.couchbase.lite.javascript.JavaScriptReplicationFilterCompiler;
 import com.couchbase.lite.javascript.JavaScriptViewCompiler;
 import com.couchbase.lite.util.Log;
 
@@ -52,6 +53,7 @@ public class CBLite extends CordovaPlugin {
 			URLStreamHandlerFactory.registerSelfIgnoreError();
 
 			View.setCompiler(new JavaScriptViewCompiler());
+			Database.setFilterCompiler(new JavaScriptReplicationFilterCompiler());
 
 			Manager server = startCBLite(this.cordova.getActivity());
 
