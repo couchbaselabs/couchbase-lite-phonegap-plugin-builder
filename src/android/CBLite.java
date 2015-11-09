@@ -52,6 +52,7 @@ public class CBLite extends CordovaPlugin {
 			URLStreamHandlerFactory.registerSelfIgnoreError();
 
 			View.setCompiler(new JavaScriptViewCompiler());
+			Database.setFilterCompiler(new JavaScriptReplicationFilterCompiler());
 
 			Manager server = startCBLite(this.cordova.getActivity());
 
