@@ -9,6 +9,7 @@ import org.apache.cordova.CordovaInterface;
 import org.json.JSONArray;
 
 import com.couchbase.lite.android.AndroidContext;
+import com.couchbase.lite.Database;
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.listener.LiteListener;
 import com.couchbase.lite.listener.LiteServlet;
