@@ -60,6 +60,6 @@ license: (Apache 2.0)
 Note: Change "cordova_name" in package.json to "Couchbase Lite Phonegap Plugin".
 
 2. `npm adduser`
-3. `npm publish .`
-4. Check the result on [npmjs.com](https://www.npmjs.com/package/couchbase-lite-phonegap-plugin) or [plugins.cordova.io](http://plugins.cordova.io/npm/index.html?q=couchbase-lite-phonegap-plugin)
+3. `npm publish --loglevel verbose .`
+4. Check the result on [npmjs.com](https://www.npmjs.com/package/couchbase-lite-phonegap-plugin)
 
