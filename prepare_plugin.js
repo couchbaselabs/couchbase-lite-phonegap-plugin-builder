@@ -1,4 +1,4 @@
-var PLUGIN_VERSION = "1.1.1";
+var PLUGIN_VERSION = "1.2.0";
 
 var pluginDir = process.argv[2]
 
@@ -85,6 +85,12 @@ function androidParts() {
 			.ele("param", {name:"onload", value : "true"}).up()
 		.up().up();
 
+	android.ele("framework", {
+		"src" : "src/android/build.gradle",
+		"custom" : "true",
+		"type" : "gradleReference"
+	});
+
 	android.ele("source-file", {
 		"src" : "src/android/CBLite.java",
 		"target-dir" : "src/com/couchbase/cblite/phonegap"
@@ -101,7 +107,13 @@ function androidParts() {
 				"target-dir" : "libs/"+segs[2]
 			})
 		} else if (/DS_Store|Info.plist/.test(file)) {
-	// nothing
+			// nothing
+		} else if (/\.aar$/.test(file)) {
+			var segs = file.split("/")
+			android.ele("resource-file", {
+				"src": file,
+				"target" : "libs/"+segs[2]
+			})
 		} else {
 			android.ele("source-file", {
 				"src": file,
@@ -111,20 +123,30 @@ function androidParts() {
 	})
 
 	androidFinder.on("end", writePluginXML)
-
 }
-
 
 function writePluginXML() {
 	var xmlstring = xml.end({pretty:true}).replace('version="&gt;=', 'version=">=')
 	console.log(xmlstring)
 	fs.writeFile(path.join(pluginDir, "plugin.xml"), xmlstring, function(err) {
 	    if (err) {
-	      console.log(err);
+	      console.log(err)
 	    } else {
+	    	copyBuildExtrasGradleFile()
 	    	copySrcAndWWW()
 	    }
 	})
+}
+
+function copyBuildExtrasGradleFile () {
+	var gradleDir = path.resolve(__dirname, "gradle")
+	var srcFile = path.join(gradleDir, "build-extras.gradle")
+	var destFile = path.join(pluginDir, "build-extras.gradle")
+	ncp(srcFile, destFile, function (err) {
+		if (err) {
+			return console.error(err)
+		}
+	});
 }
 
 function copySrcAndWWW() {
