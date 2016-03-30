@@ -10,14 +10,8 @@
 
 @synthesize liteURL;
 
-- (id) initWithWebView:(UIWebView*)theWebView
-{
-    self = [super initWithWebView:theWebView];
-    if (self) {
-        // todo check domain whitelist to give devs a helpful error message
-        [self launchCouchbaseLite];
-    }
-    return self;
+- (void)pluginInitialize {
+    [self launchCouchbaseLite];
 }
 
 - (void)getURL:(CDVInvokedUrlCommand*)urlCommand
@@ -25,7 +19,6 @@
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[self.liteURL absoluteString]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:urlCommand.callbackId];
 }
-
 
 - (void)launchCouchbaseLite
 {
