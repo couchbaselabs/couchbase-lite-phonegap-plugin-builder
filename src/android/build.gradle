@@ -6,7 +6,8 @@ repositories{
 }
 
 dependencies {
-   compile(name:'couchbase-lite-android-1.3.0', ext:'aar')
+   compile(name:'couchbase-lite-android-1.2.1', ext:'aar')
+   compile(name:'couchbase-lite-android-sqlite-default-1.2.1', ext:'aar')
 }
 
 android {
