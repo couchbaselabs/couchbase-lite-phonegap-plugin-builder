@@ -1,7 +1,7 @@
-var PLUGIN_VERSION = "1.3.0";
+var PLUGIN_VERSION = "1.3.1";
+var ANDROID_BUILD_NUMBER = "";
 
-var pluginDir = process.argv[2]
-
+var pluginDir = process.argv[2];
 if (!pluginDir) {
 	console.log("run this script with one argument, the directory where the plugin.xml should be written")
 	process.exit(1)
@@ -59,7 +59,7 @@ linkwith.forEach(function(l){
 	ios.ele("framework", {src : l})
 })
 
-var iosFinder = finder(path.join(pluginDir,"lib", "ios"));
+var iosFinder = finder(path.join(pluginDir, "lib", "ios"));
 iosFinder.on("file", function(file) {
 	file = file.substring(pluginDir.length + 1)
 	if (/.*\.h/.test(file)) {
@@ -127,15 +127,33 @@ function androidParts() {
 
 function writePluginXML() {
 	var xmlstring = xml.end({pretty:true}).replace('version="&gt;=', 'version=">=')
-	console.log(xmlstring)
 	fs.writeFile(path.join(pluginDir, "plugin.xml"), xmlstring, function(err) {
-	    if (err) {
-	      console.log(err)
-	    } else {
-	    	copyBuildExtrasGradleFile()
-	    	copySrcAndWWW()
-	    }
-	})
+		if (err) {
+			console.log(err)
+		} else {
+			updateVersionNumberInGradleFile();
+			copyBuildExtrasGradleFile()
+			copySrcAndWWW()
+		}
+	});
+}
+
+function updateVersionNumberInGradleFile() {
+	var gradleFile = path.join(pluginDir, "src", "android", "build.gradle");
+	fs.readFile(gradleFile, 'utf8', function (err, data) {
+		if (err) {
+			return console.log(err);
+		}
+
+		var buildno = ANDROID_BUILD_NUMBER.length > 0 ? '-' + ANDROID_BUILD_NUMBER : '';
+		var version = PLUGIN_VERSION + buildno;
+		var result = data.replace(/<VERSION>/g, version);
+		fs.writeFile(gradleFile, result, 'utf8', function (err) {
+			if (err) {
+				return console.log(err);
+			} 
+		});
+	});
 }
 
 function copyBuildExtrasGradleFile () {
