@@ -1,11 +1,12 @@
 var PLUGIN_VERSION = "1.3.1";
-var ANDROID_BUILD_NUMBER = "";
 
 var pluginDir = process.argv[2];
 if (!pluginDir) {
   console.log("run this script with one argument, the directory where the plugin.xml should be written")
   process.exit(1)
 }
+
+var androidBuildNo = process.argv.length > 3 ? process.argv[3] : '';
 
 // make the xml for the package file
 var builder = require("xmlbuilder"),
@@ -145,7 +146,7 @@ function updateVersionNumberInGradleFile() {
       return console.log(err);
     }
 
-    var buildno = ANDROID_BUILD_NUMBER.length > 0 ? '-' + ANDROID_BUILD_NUMBER : '';
+    var buildno = androidBuildNo.length > 0 ? '-' + androidBuildNo : '';
     var version = PLUGIN_VERSION + buildno;
     var result = data.replace(/<VERSION>/g, version);
     fs.writeFile(gradleFile, result, 'utf8', function (err) {
