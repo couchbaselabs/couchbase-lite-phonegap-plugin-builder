@@ -140,21 +140,17 @@ function writePluginXML() {
 }
 
 function updateVersionNumberInGradleFile() {
-  var gradleFile = path.join(pluginDir, "src", "android", "build.gradle");
-  fs.readFile(gradleFile, 'utf8', function (err, data) {
-    if (err) {
-      return console.log(err);
-    }
+	var srcFile = path.join("gradle", "build.gradle")
+	console.log("Android Gradle File: " + srcFile);
 
-    var buildno = androidBuildNo.length > 0 ? '-' + androidBuildNo : '';
-    var version = PLUGIN_VERSION + buildno;
-    var result = data.replace(/<VERSION>/g, version);
-    fs.writeFile(gradleFile, result, 'utf8', function (err) {
-      if (err) {
-        return console.log(err);
-      } 
-    });
-  });
+	var content = fs.readFileSync(srcFile, "utf8");
+	var buildno = androidBuildNo.length > 0 ? '-' + androidBuildNo : '';
+	var version = PLUGIN_VERSION + buildno;
+	var nuContent = content.replace(/<VERSION>/g, version);
+
+	console.log("Android Gradle File New Content: " + nuContent);
+	var destFile = path.join(pluginDir, "src", "android", "build.gradle");
+	fs.writeFileSync(destFile, nuContent);
 }
 
 function copyBuildExtrasGradleFile () {
