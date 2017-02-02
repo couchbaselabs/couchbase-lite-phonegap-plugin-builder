@@ -1,4 +1,4 @@
-var PLUGIN_VERSION = "1.3.1";
+var PLUGIN_VERSION = "1.4.0";
 
 var pluginDir = process.argv[2];
 if (!pluginDir) {
