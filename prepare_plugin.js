@@ -101,24 +101,11 @@ function androidParts() {
 
   androidFinder.on("file", function(file) {
     file = file.substring(pluginDir.length + 1)
-    if (/\.so$/.test(file)) {
-      var segs = file.split("/")
-      android.ele("source-file", {
-        "src": file,
-        "target-dir" : "libs/"+segs[2]
-      })
-    } else if (/DS_Store|Info.plist/.test(file)) {
+    if (/DS_Store|Info.plist/.test(file)) {
       // nothing
-    } else if (/\.aar$/.test(file)) {
-      var segs = file.split("/")
-      android.ele("resource-file", {
-        "src": file,
-        "target" : "libs/"+segs[2]
-      })
     } else {
-      android.ele("source-file", {
+      android.ele("lib-file", {
         "src": file,
-        "target-dir" : "libs"
       })
     }
   })
