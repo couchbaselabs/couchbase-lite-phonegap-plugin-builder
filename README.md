@@ -1,3 +1,5 @@
+:warning: This repo is obsolete.  It is based on a plugin that is only usable with a version of Couchbase Lite that reached end of life years ago.
+
 # Generate a Couchbase Lite PhoneGap plugin
 
 **[You probably want to go to the plugin itself](https://github.com/couchbaselabs/Couchbase-Lite-PhoneGap-Plugin)**
